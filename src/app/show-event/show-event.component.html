@@ -1,0 +1,10 @@
+<div *ngIf="event">
+  <h1>{{event.name}}</h1>
+
+
+
+  <p *ngFor="let ticketCategory of event.activeCategories">
+      {{ticketCategory | json}}
+  </p>
+
+</div>
