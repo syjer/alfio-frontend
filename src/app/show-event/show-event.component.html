@@ -1,10 +1,23 @@
 <div *ngIf="event">
-  <h1>{{event.name}}</h1>
 
+  <div>
+    <div><img [src]="event.imageUrl" alt="{{event.name}}"></div>
+    <h1>{{event.name}}</h1>
+  </div>
+  <div>
+    <h2>Event info</h2>
+    <p>by <strong>{{event.organizationName}}</strong> &lt;<a href="mailto:{{event.organizationEmail}}">{{event.organizationEmail}}</a>&gt;</p>
+    <p>{{event.begin}}</p>
+    <p>{{event.location}}</p>
+  </div>
 
-
+  <h2>Available tickets</h2>
   <p *ngFor="let ticketCategory of event.activeCategories">
       {{ticketCategory | json}}
   </p>
 
+  <h2>Expired tickets</h2>
+  <p *ngFor="let ticketCategory of event.expiredCategories">
+      {{ticketCategory | json}}
+  </p>
 </div>
