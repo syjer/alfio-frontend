@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { EventService } from '../event.service';
 import { EventListItem } from '../models/event-list-item';
 
@@ -10,12 +11,12 @@ import { EventListItem } from '../models/event-list-item';
 })
 export class ListEventsComponent implements OnInit {
 
-  events: EventListItem[];
+  events: Observable<EventListItem[]>;
 
   constructor(private eventService : EventService) { }
 
   ngOnInit() {
-    this.eventService.getEvents().then(events => this.events = events);
+    this.events = this.eventService.getEvents()
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Observable } from 'rxjs';
 import { EventService } from '../event.service';
 import { PublicEvent } from '../models/public-event';
 
@@ -16,10 +17,9 @@ export class ShowEventComponent implements OnInit {
   constructor(private eventService: EventService, private route: ActivatedRoute) { }
 
   ngOnInit() : void {
-    
     this.route.params.forEach((params: Params) => {
       let eventName: string = params['eventName'];
-      this.eventService.getEventByName(eventName).then(event => this.event = event);
+      this.eventService.getEventByName(eventName).subscribe(ev => this.event = ev);
     });    
   }
 }

@@ -1,3 +1,3 @@
 <ul>
-  <li *ngFor="let event of events"><a [routerLink]="['/event/', event.key]">{{event.name}}</a></li>
+  <li *ngFor="let event of events | async"><a [routerLink]="['/event/', event.key]">{{event.name}}</a></li>
 </ul>
