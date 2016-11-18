@@ -12,12 +12,19 @@
   </div>
 
   <h2>Available tickets</h2>
-  <p *ngFor="let ticketCategory of event.activeCategories">
-      {{ticketCategory | json}}
-  </p>
+  <ul>
+    <li *ngFor="let ticketCategory of event.activeCategories">
+      FIXME NAME/description(?)
+      Sales end {{ticketCategory.expiration}}
+      Price {{ticketCategory.price}} 
+      <select><option *ngFor="let quantity of toSequenceFromZero(ticketCategory.maxTickets)" [value]="quantity">{{quantity}}</option></select>
+    </li>
+  </ul>
 
   <h2>Expired tickets</h2>
-  <p *ngFor="let ticketCategory of event.expiredCategories">
-      {{ticketCategory | json}}
-  </p>
+  <ul>
+    <li *ngFor="let ticketCategory of event.expiredCategories">
+        {{ticketCategory | json}}
+    </li>
+  </ul>
 </div>

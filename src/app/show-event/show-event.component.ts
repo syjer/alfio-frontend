@@ -22,4 +22,9 @@ export class ShowEventComponent implements OnInit {
       this.eventService.getEventByName(eventName).subscribe(ev => this.event = ev);
     });    
   }
+
+  // generate a list containing a sequence from 0..quantity
+  toSequenceFromZero(quantity: number) : number[] {
+    return Array.from(Array(quantity + 1).keys())
+  }
 }
