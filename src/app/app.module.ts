@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { ListEventsComponent } from './list-events/list-events.component';
 import { ShowEventComponent } from './show-event/show-event.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { TicketViewComponent } from './ticket-view/ticket-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListEventsComponent,
     ShowEventComponent,
-    ReservationComponent
+    ReservationComponent,
+    TicketViewComponent
   ],
   imports: [
     BrowserModule,
@@ -22,9 +24,14 @@ import { ReservationComponent } from './reservation/reservation.component';
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot([
-      { path: '', component: ListEventsComponent },
-      { path: 'event/:eventName', component: ShowEventComponent},
-      { path: 'event/:eventName/reservation/:reservationId/book', component: ReservationComponent}
+      { path: '',                                                           component: ListEventsComponent },
+      { path: 'event/:eventName',                                           component: ShowEventComponent},
+      { path: 'event/:eventName/reservation/:reservationId',                component: ReservationComponent},
+      { path: 'event/:eventName/reservation/:reservationId/book',           component: ReservationComponent},
+      { path: 'event/:eventName/reservation/:reservationId/success',        component: ReservationComponent},
+      { path: 'event/:eventName/reservation/:reservationId/waitingPayment', component: ReservationComponent},
+      { path: 'event/:eventName/reservation/:reservationId/failure',        component: ReservationComponent},
+      { path: 'event/:eventName/ticket/:ticketId/view',                     component: TicketViewComponent}
     ])
   ],
   providers: [{ provide: XSRFStrategy, useValue: new CookieXSRFStrategy('XSRF-TOKEN', 'X-XSRF-TOKEN') }],
