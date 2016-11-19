@@ -7,12 +7,12 @@ import { ReservationService } from '../reservation.service';
 import { PublicEvent } from '../models/public-event';
 
 @Component({
-  selector: 'app-show-event',
-  templateUrl: './show-event.component.html',
-  styleUrls: ['./show-event.component.css'],
+  selector: 'app-ticket-selection',
+  templateUrl: './ticket-selection.component.html',
+  styleUrls: ['./ticket-selection.component.css'],
   providers: [EventService, ReservationService]
 })
-export class ShowEventComponent implements OnInit {
+export class TicketSelectionComponent implements OnInit {
 
   event : PublicEvent;
   reservationForm : FormGroup;

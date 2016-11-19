@@ -6,7 +6,7 @@ import { RouterModule }   from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ListEventsComponent } from './list-events/list-events.component';
-import { ShowEventComponent } from './show-event/show-event.component';
+import { TicketSelectionComponent } from './ticket-selection/ticket-selection.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { TicketViewComponent } from './ticket-view/ticket-view.component';
 
@@ -14,7 +14,7 @@ import { TicketViewComponent } from './ticket-view/ticket-view.component';
   declarations: [
     AppComponent,
     ListEventsComponent,
-    ShowEventComponent,
+    TicketSelectionComponent,
     ReservationComponent,
     TicketViewComponent
   ],
@@ -25,7 +25,7 @@ import { TicketViewComponent } from './ticket-view/ticket-view.component';
     HttpModule,
     RouterModule.forRoot([
       { path: '',                                                           component: ListEventsComponent },
-      { path: 'event/:eventName',                                           component: ShowEventComponent},
+      { path: 'event/:eventName',                                           component: TicketSelectionComponent},
       { path: 'event/:eventName/reservation/:reservationId',                component: ReservationComponent},
       { path: 'event/:eventName/reservation/:reservationId/book',           component: ReservationComponent},
       { path: 'event/:eventName/reservation/:reservationId/success',        component: ReservationComponent},

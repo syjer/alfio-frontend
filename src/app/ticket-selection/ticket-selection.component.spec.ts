@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { ShowEventComponent } from './show-event.component';
+import { TicketSelectionComponent } from './ticket-selection.component';
 
-describe('ShowEventComponent', () => {
-  let component: ShowEventComponent;
-  let fixture: ComponentFixture<ShowEventComponent>;
+describe('TicketSelectionComponent', () => {
+  let component: TicketSelectionComponent;
+  let fixture: ComponentFixture<TicketSelectionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShowEventComponent ]
+      declarations: [ TicketSelectionComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShowEventComponent);
+    fixture = TestBed.createComponent(TicketSelectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
