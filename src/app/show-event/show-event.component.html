@@ -12,14 +12,18 @@
   </div>
 
   <h2>Available tickets</h2>
-  <ul>
-    <li *ngFor="let ticketCategory of event.activeCategories">
-      FIXME NAME/description(?)
-      Sales end {{ticketCategory.expiration}}
-      Price {{ticketCategory.price}} 
-      <select><option *ngFor="let quantity of toSequenceFromZero(ticketCategory.maxTickets)" [value]="quantity">{{quantity}}</option></select>
-    </li>
-  </ul>
+  <form novalidate [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+    <ul formArrayName="reservation">
+      <li *ngFor="let ticketCategory of event.activeCategories;let i=index" [formGroupName]="i">
+        FIXME NAME/description(?)
+        Sales end {{ticketCategory.expiration}}
+        Price {{ticketCategory.price}}
+        <input formControlName="ticketCategoryId" [value]="ticketCategory.ticketCategoryId" type="hidden">
+        <select formControlName="amount"><option *ngFor="let quantity of toSequenceFromZero(ticketCategory.maxTickets)" [value]="quantity">{{quantity}}</option></select>
+      </li>
+    </ul>
+    <button type="submit">Continue</button>
+  </form>
 
   <h2>Expired tickets</h2>
   <ul>
