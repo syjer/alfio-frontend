@@ -16,7 +16,7 @@ export class EventService {
   }
 
   getEventByName(name: string): Observable<PublicEvent> {
-    return this.http.get('/api/public/events/'+name).map(response => response.json() as PublicEvent);
+    return this.http.get('/api/public/events/' + name).map(response => response.json() as PublicEvent);
   }
 
 }

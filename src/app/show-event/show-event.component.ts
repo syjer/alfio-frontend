@@ -1,22 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { EventService } from '../event.service';
+import { ReservationService } from '../reservation.service';
 import { PublicEvent } from '../models/public-event';
 
 @Component({
   selector: 'app-show-event',
   templateUrl: './show-event.component.html',
   styleUrls: ['./show-event.component.css'],
-  providers: [EventService]
+  providers: [EventService, ReservationService]
 })
 export class ShowEventComponent implements OnInit {
 
   event : PublicEvent;
   reservationForm : FormGroup;
 
-  constructor(private eventService: EventService, private route: ActivatedRoute, private formBuilder: FormBuilder) { }
+  constructor(private eventService: EventService,
+              private reservationService : ReservationService,  
+              private route: ActivatedRoute, 
+              private formBuilder: FormBuilder,
+              private router: Router) { }
 
   ngOnInit() : void {
     this.route.params.forEach((params: Params) => {
@@ -33,8 +38,19 @@ export class ShowEventComponent implements OnInit {
     return Array.from(Array(quantity + 1).keys())
   }
 
-  onSubmit() : void {
-    console.log(this.reservationForm.value);
+  onSubmit({value, valid} : {value: any, valid: boolean}) : void {
+    //FIXME add validation :D
+    
+    this.reservationService.reserve(this.event.key, value).subscribe(
+      result => {
+        if(result.success && result.status === 'OK') {
+          this.router.navigateByUrl(result.data);
+        } else {
+          console.log(result);//FIXME
+        }
+      },
+      err => console.log(err)//FIXME
+    );
   }
 
   private buildForm() : void {

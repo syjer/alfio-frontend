@@ -3,7 +3,7 @@ export class EventListItem {
     apiVersion : number;
 
     begin : string;
-    descriptions: any; //fixme 
+    descriptions: any; //FIXME 
     end : string;
     external : boolean;
     imageUrl : string;

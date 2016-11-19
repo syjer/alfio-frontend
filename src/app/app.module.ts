@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, XSRFStrategy, CookieXSRFStrategy} from '@angular/http';
 import { RouterModule }   from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -24,10 +24,10 @@ import { ReservationComponent } from './reservation/reservation.component';
     RouterModule.forRoot([
       { path: '', component: ListEventsComponent },
       { path: 'event/:eventName', component: ShowEventComponent},
-      { path: 'event/:eventName/reservation/:reservationId/*', component: ReservationComponent}
+      { path: 'event/:eventName/reservation/:reservationId/book', component: ReservationComponent}
     ])
   ],
-  providers: [],
+  providers: [{ provide: XSRFStrategy, useValue: new CookieXSRFStrategy('XSRF-TOKEN', 'X-XSRF-TOKEN') }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

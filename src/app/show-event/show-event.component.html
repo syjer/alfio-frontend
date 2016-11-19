@@ -12,7 +12,7 @@
   </div>
 
   <h2>Available tickets</h2>
-  <form novalidate [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+  <form novalidate [formGroup]="reservationForm" (ngSubmit)="onSubmit(reservationForm)">
     <ul formArrayName="reservation">
       <li *ngFor="let ticketCategory of event.activeCategories;let i=index" [formGroupName]="i">
         FIXME NAME/description(?)
